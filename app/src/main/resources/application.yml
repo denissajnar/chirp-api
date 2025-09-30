@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: chirp
+    admin:
+      enabled: true
+  r2dbc:
+    url: r2dbc:postgresql://db.rgprkeeqsurrkyfiimdz.supabase.co:5432/postgres
+    username: postgres
+    password: ${POSTGRES_PASSWORD}
+    pool:
+      initial-size: 5
+      max-size: 10
+      max-idle-time: 5m
+      max-life-time: 20m
+      max-acquire-time: 20s
+    properties:
+      connectTimeout: 30
+      tcpKeepAlive: true
+      prepareThreshold: 5
+      preparedStatementCacheQueries: 256
+      preparedStatementCacheSizeMiB: 5
+      sslMode: require

@@ -1,0 +1,52 @@
+plugins {
+    id("chirp.spring-boot-app")
+    alias(libs.plugins.graalvm.buildtools.native)
+}
+
+group = "dev.denissajnar"
+version = "0.0.1-SNAPSHOT"
+description = "Chirp Backend"
+
+dependencies {
+    implementation(projects.user)
+    implementation(projects.chat)
+    implementation(projects.notification)
+    implementation(projects.common)
+    implementation(libs.spring.boot.starter.data.r2dbc)
+    implementation(libs.spring.jdbc)
+    runtimeOnly(libs.postgresql)
+    runtimeOnly(libs.r2dbc.postgresql)
+//    implementation("org.springframework.boot:spring-boot-starter-actuator")
+//    implementation("org.springframework.boot:spring-boot-starter-amqp")
+//    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+//    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+//    implementation("org.springframework.boot:spring-boot-starter-flyway")
+//    implementation("org.springframework.boot:spring-boot-starter-mail")
+//    implementation("org.springframework.boot:spring-boot-starter-security")
+//    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+//    implementation("org.springframework.boot:spring-boot-starter-webflux")
+//    implementation("org.springframework.boot:spring-boot-starter-websocket")
+//    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+//    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+//    implementation("org.flywaydb:flyway-database-postgresql")
+//    implementation("org.jetbrains.kotlin:kotlin-reflect")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+//    implementation("org.springframework:spring-jdbc")
+//    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
+//    developmentOnly("org.springframework.boot:spring-boot-devtools")
+//    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+//    runtimeOnly("org.postgresql:postgresql")
+//    runtimeOnly("org.postgresql:r2dbc-postgresql")
+//    testImplementation("org.springframework.boot:spring-boot-starter-test")
+//    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+//    testImplementation("io.projectreactor:reactor-test")
+//    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+//    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+//    testImplementation("org.springframework.amqp:spring-rabbit-test")
+//    testImplementation("org.springframework.security:spring-security-test")
+//    testImplementation("org.testcontainers:junit-jupiter")
+//    testImplementation("org.testcontainers:postgresql")
+//    testImplementation("org.testcontainers:r2dbc")
+//    testImplementation("org.testcontainers:rabbitmq")
+//    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
