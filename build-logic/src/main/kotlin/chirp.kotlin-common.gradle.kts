@@ -19,6 +19,10 @@ dependencyManagement {
     }
 }
 
+dependencies {
+    "implementation"(libraries.findLibrary("kotlin-logging").get())
+}
+
 configure<KotlinJvmProjectExtension> {
     jvmToolchain(24)
 }

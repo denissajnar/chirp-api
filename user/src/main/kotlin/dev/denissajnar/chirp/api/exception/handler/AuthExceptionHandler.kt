@@ -1,11 +1,13 @@
 package dev.denissajnar.chirp.api.exception.handler
 
+import dev.denissajnar.chirp.api.dto.ErrorResponse
 import dev.denissajnar.chirp.domain.exception.UserAlreadyExistsException
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import java.time.Instant
 
 @RestControllerAdvice
 class AuthExceptionHandler {
@@ -13,14 +15,24 @@ class AuthExceptionHandler {
     @ExceptionHandler(UserAlreadyExistsException::class)
     @ResponseStatus(HttpStatus.CONFLICT)
     fun onUserAlreadyExists(e: UserAlreadyExistsException) =
-        mapOf(
-            "code" to "USER_ALREADY_EXISTS",
-            "message" to e.message,
+        ErrorResponse(
+            timestamp = Instant.now(),
+            status = HttpStatus.BAD_REQUEST.value(),
+            error = "Validation Failed",
+            message = e.message ?: "User already exists",
         )
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun onValidationException(e: MethodArgumentNotValidException) =
         e.bindingResult.fieldErrors
-            .associateBy({ it.field }, { it.defaultMessage ?: "Invalid value" })
+            .associateBy({ it.field }, { it.defaultMessage ?: "Invalid value" }).let { errors ->
+                ErrorResponse(
+                    timestamp = Instant.now(),
+                    status = HttpStatus.BAD_REQUEST.value(),
+                    error = "Validation Failed",
+                    message = "Request validation failed",
+                    errors = errors,
+                )
+            }
 }

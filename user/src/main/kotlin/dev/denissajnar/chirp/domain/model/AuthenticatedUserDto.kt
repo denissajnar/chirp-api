@@ -1,9 +1,9 @@
 package dev.denissajnar.chirp.domain.model
 
-import dev.denissajnar.chirp.api.dto.UserDto
+import dev.denissajnar.chirp.api.dto.UserResponse
 
 data class AuthenticatedUserDto(
-    val user: UserDto,
+    val user: UserResponse,
     val accessToken: String,
     val refreshToken: String,
 )
