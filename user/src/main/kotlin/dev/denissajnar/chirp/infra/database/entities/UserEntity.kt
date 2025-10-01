@@ -6,11 +6,9 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.annotation.Version
 import org.springframework.data.relational.core.mapping.Table
+import java.time.Instant
 
-@Table(
-    name = "users",
-    schema = "user_service",
-)
+@Table(name = "users", schema = "user_service")
 data class UserEntity(
     @Id
     val id: Long? = null,
@@ -20,9 +18,9 @@ data class UserEntity(
     val email: String,
     val hasVerifiedEmail: Boolean = false,
     @CreatedDate
-    val createdAt: Long = System.currentTimeMillis(),
+    val createdAt: Instant = Instant.now(),
     @LastModifiedDate
-    val updatedAt: Long = System.currentTimeMillis(),
+    val updatedAt: Instant = Instant.now(),
     @Version
     val version: Long = 0L,
 )

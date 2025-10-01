@@ -8,6 +8,9 @@ dependencies {
     "implementation"(libraries.findLibrary("kotlin.reflect").get())
     "implementation"(libraries.findLibrary("kotlin.stdlib").get())
     "implementation"(libraries.findLibrary("spring-boot-starter-webflux").get())
+    "implementation"(libraries.findLibrary("jackson-module-kotlin").get())
+    "implementation"(libraries.findLibrary("reactor-kotlin-extensions").get())
+    "implementation"(libraries.findLibrary("kotlinx-coroutines-reactor").get())
 
     "annotationProcessor"(libraries.findLibrary("spring-boot-processor").get())
 
