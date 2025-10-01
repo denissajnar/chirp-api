@@ -1,6 +1,6 @@
-package dev.denissajnar.user.infra.database.entities
+package dev.denissajnar.chirp.infra.database.entities
 
-import dev.denissajnar.user.domain.model.UserId
+import dev.denissajnar.chirp.domain.model.UserId
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate

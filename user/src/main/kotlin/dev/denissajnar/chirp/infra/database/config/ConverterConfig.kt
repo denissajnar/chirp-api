@@ -1,7 +1,7 @@
-package dev.denissajnar.user.infra.database.config
+package dev.denissajnar.chirp.infra.database.config
 
-import dev.denissajnar.user.infra.database.converters.UserIdReadConverter
-import dev.denissajnar.user.infra.database.converters.UserIdWriteConverter
+import dev.denissajnar.chirp.infra.database.converters.UserIdReadConverter
+import dev.denissajnar.chirp.infra.database.converters.UserIdWriteConverter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 

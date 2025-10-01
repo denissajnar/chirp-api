@@ -1,4 +1,4 @@
-package dev.denissajnar.user.domain.model
+package dev.denissajnar.chirp.domain.model
 
 data class User(
     val id: UserId,

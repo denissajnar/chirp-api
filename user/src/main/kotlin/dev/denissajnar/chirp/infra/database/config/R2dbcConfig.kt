@@ -1,4 +1,4 @@
-package dev.denissajnar.user.infra.database.config
+package dev.denissajnar.chirp.infra.database.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.r2dbc.config.EnableR2dbcAuditing
