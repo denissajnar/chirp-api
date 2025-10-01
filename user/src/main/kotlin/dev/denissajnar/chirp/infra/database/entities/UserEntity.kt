@@ -12,7 +12,7 @@ import java.time.Instant
 data class UserEntity(
     @Id
     val id: Long? = null,
-    val uuid: UserId? = null,
+    val externalId: UserId? = null,
     val username: String,
     val hashedPassword: String,
     val email: String,

@@ -15,6 +15,9 @@ repositories {
 
 dependencies {
     implementation(projects.common)
+    implementation(libs.spring.boot.starter.security)
+    implementation(libs.spring.boot.starter.validation)
+    implementation(libs.springdoc.openapi.starter.webflux.ui)
     implementation(libs.spring.boot.starter.flyway)
     implementation(libs.flyway.database.postgresql)
     implementation(libs.spring.boot.starter.data.r2dbc)

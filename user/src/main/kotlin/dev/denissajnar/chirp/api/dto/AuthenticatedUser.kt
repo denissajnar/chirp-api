@@ -1,4 +1,6 @@
-package dev.denissajnar.chirp.domain.model
+package dev.denissajnar.chirp.api.dto
+
+import dev.denissajnar.chirp.domain.model.User
 
 data class AuthenticatedUser(
     val user: User,

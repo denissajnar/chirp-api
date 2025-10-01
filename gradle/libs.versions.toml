@@ -10,6 +10,7 @@ okhttp = "5.1.0"
 firebase = "21.1.1"
 kotlinx-coroutines = "1.10.2"
 kotlin-logging = "7.0.13"
+springdoc = "2.8.13"
 
 [libraries]
 # Spring Boot Starters
@@ -31,6 +32,9 @@ spring-boot-docker-compose = { module = "org.springframework.boot:spring-boot-do
 spring-boot-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers" }
 spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure" }
 spring-boot-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
+
+# API Documentation
+springdoc-openapi-starter-webflux-ui = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui", version.ref = "springdoc" }
 
 # JWT
 jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "jakarta" }
