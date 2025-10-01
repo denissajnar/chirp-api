@@ -20,3 +20,7 @@ spring:
       preparedStatementCacheQueries: 256
       preparedStatementCacheSizeMiB: 5
       sslMode: require
+  flyway:
+    url: jdbc:postgresql://db.rgprkeeqsurrkyfiimdz.supabase.co:5432/postgres
+    user: postgres
+    password: ${POSTGRES_PASSWORD}

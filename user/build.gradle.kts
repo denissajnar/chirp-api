@@ -15,6 +15,13 @@ repositories {
 
 dependencies {
     implementation(projects.common)
+    implementation(libs.spring.boot.starter.flyway)
+    implementation(libs.flyway.database.postgresql)
+    implementation(libs.spring.boot.starter.data.r2dbc)
+    implementation(libs.spring.jdbc)
+    runtimeOnly(libs.postgresql)
+    runtimeOnly(libs.r2dbc.postgresql)
+
     testImplementation(kotlin("test"))
 }
 

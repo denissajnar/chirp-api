@@ -1,9 +1,7 @@
-import gradle.kotlin.dsl.accessors._7d45827fdee414aeeebb74449bdbb648.annotationProcessor
-import gradle.kotlin.dsl.accessors._7d45827fdee414aeeebb74449bdbb648.compileOnly
-
 plugins {
     id("chirp.kotlin-common")
     id("io.spring.dependency-management")
+    kotlin("plugin.spring")
 }
 
 dependencies {
