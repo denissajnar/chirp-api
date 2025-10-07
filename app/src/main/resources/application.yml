@@ -25,6 +25,12 @@ spring:
     user: postgres.rgprkeeqsurrkyfiimdz
     password: ${POSTGRES_PASSWORD}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
 springdoc:
   api-docs:
     path: /api-docs
