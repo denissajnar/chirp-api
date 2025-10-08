@@ -3,10 +3,10 @@ package dev.denissajnar.chirp.api.exception.handler
 import dev.denissajnar.chirp.api.dto.ErrorResponse
 import dev.denissajnar.chirp.domain.exception.UserAlreadyExistsException
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.bind.support.WebExchangeBindException
 import java.time.Instant
 
 @RestControllerAdvice
@@ -22,9 +22,9 @@ class AuthExceptionHandler {
             message = e.message ?: "User already exists",
         )
 
-    @ExceptionHandler(MethodArgumentNotValidException::class)
+    @ExceptionHandler(WebExchangeBindException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    fun onValidationException(e: MethodArgumentNotValidException) =
+    fun onValidationException(e: WebExchangeBindException) =
         e.bindingResult.fieldErrors
             .associateBy({ it.field }, { it.defaultMessage ?: "Invalid value" }).let { errors ->
                 ErrorResponse(
