@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -73,6 +74,7 @@ class AuthController(
             ),
         ],
     )
+    @Transactional
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     suspend fun register(

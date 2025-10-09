@@ -5,7 +5,7 @@ import dev.denissajnar.chirp.infra.database.entities.UserEntity
 
 fun UserEntity.toUser() =
     User(
-        id = externalId ?: error("User id is null"),
+        id = externalId,
         username = username,
         email = email,
         hasVerifiedEmail = hasVerifiedEmail,

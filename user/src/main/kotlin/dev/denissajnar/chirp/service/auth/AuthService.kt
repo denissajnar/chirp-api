@@ -19,14 +19,14 @@ class AuthService(
         val trimmedUsername = username.trim()
 
         userRepository.findByEmailOrUsername(trimmedEmail, trimmedUsername)
-            ?: throw UserAlreadyExistsException()
+            ?.let { throw UserAlreadyExistsException() }
 
-        val hashedPassword = passwordEncoder.encode(password)
+        val hashedPassword = passwordEncoder.encode(password)!!
 
         val newUser = UserEntity(
             username = trimmedUsername,
             email = trimmedEmail,
-            hashedPassword = hashedPassword ?: error("Password hash is null"),
+            hashedPassword = hashedPassword,
         )
 
         return userRepository.save(newUser).toUser()

@@ -4,8 +4,8 @@ spring:
     admin:
       enabled: true
   r2dbc:
-    url: r2dbc:postgresql://aws-1-eu-central-2.pooler.supabase.com:6543/postgres
-    username: postgres.rgprkeeqsurrkyfiimdz
+    url: r2dbc:postgresql://localhost:5432/chirp
+    username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
     pool:
       initial-size: 5
@@ -19,10 +19,9 @@ spring:
       prepareThreshold: 5
       preparedStatementCacheQueries: 256
       preparedStatementCacheSizeMiB: 5
-      sslMode: require
   flyway:
-    url: jdbc:postgresql://aws-1-eu-central-2.pooler.supabase.com:6543/postgres?preparedStatementCacheQueries=0&prepareThreshold=0
-    user: postgres.rgprkeeqsurrkyfiimdz
+    url: jdbc:postgresql://localhost:5432/chirp
+    user: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
 
 management:

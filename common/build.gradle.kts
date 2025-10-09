@@ -14,6 +14,7 @@ repositories {
 
 
 dependencies {
+    api(libs.uuid.creator)
     testImplementation(kotlin("test"))
 }
 

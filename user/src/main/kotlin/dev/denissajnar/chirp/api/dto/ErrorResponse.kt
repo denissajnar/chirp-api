@@ -7,7 +7,7 @@ import java.time.Instant
 data class ErrorResponse(
 
     @Schema(description = "Timestamp of when the error occurred")
-    val timestamp: Instant,
+    val timestamp: Instant = Instant.now(),
 
     @Schema(description = "HTTP status code")
     val status: Int,

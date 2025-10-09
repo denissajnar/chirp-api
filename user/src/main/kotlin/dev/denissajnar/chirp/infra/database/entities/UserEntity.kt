@@ -1,5 +1,6 @@
 package dev.denissajnar.chirp.infra.database.entities
 
+import com.github.f4b6a3.uuid.UuidCreator
 import dev.denissajnar.chirp.domain.model.UserId
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
@@ -12,15 +13,15 @@ import java.time.Instant
 data class UserEntity(
     @Id
     val id: Long? = null,
-    val externalId: UserId? = null,
+    val externalId: UserId = UserId(UuidCreator.getTimeOrderedEpoch()),
     val username: String,
     val hashedPassword: String,
     val email: String,
     val hasVerifiedEmail: Boolean = false,
     @CreatedDate
-    val createdAt: Instant = Instant.now(),
+    val createdAt: Instant? = null,
     @LastModifiedDate
-    val updatedAt: Instant = Instant.now(),
+    val updatedAt: Instant? = null,
     @Version
     val version: Long = 0L,
 )

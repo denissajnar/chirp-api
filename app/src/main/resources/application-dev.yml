@@ -1,0 +1,9 @@
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://db.rgprkeeqsurrkyfiimdz.supabase.co:5432/postgres
+    username: postgres
+    properties:
+      sslMode: require
+  flyway:
+    url: jdbc:postgresql://aws-1-eu-central-2.pooler.supabase.com:6543/postgres
+    user: postgres

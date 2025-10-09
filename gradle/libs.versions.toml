@@ -11,6 +11,7 @@ firebase = "21.1.1"
 kotlinx-coroutines = "1.10.2"
 kotlin-logging = "7.0.13"
 springdoc = "2.8.13"
+uuid-creator = "6.1.1"
 
 [libraries]
 # Spring Boot Starters
@@ -44,6 +45,9 @@ jwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jwt" }
 
 # Jackson
 jackson-module-kotlin = { module = "tools.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+
+# UUID
+uuid-creator = { module = "com.github.f4b6a3:uuid-creator", version.ref = "uuid-creator" }
 
 # Kotlin
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }

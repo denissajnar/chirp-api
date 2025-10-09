@@ -35,4 +35,14 @@ class AuthExceptionHandler {
                     errors = errors,
                 )
             }
+
+    @ExceptionHandler(Exception::class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    fun onGeneralException(e: Exception) =
+        ErrorResponse(
+            timestamp = Instant.now(),
+            status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            error = "Internal Server Error",
+            message = e.message ?: "Something went wrong",
+        )
 }
