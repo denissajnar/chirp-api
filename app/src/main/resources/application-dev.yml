@@ -7,3 +7,7 @@ spring:
   flyway:
     url: jdbc:postgresql://aws-1-eu-central-2.pooler.supabase.com:6543/postgres
     user: postgres
+
+jwt:
+  expiration:
+    minutes: 160

@@ -13,7 +13,7 @@ data class ErrorResponse(
     val status: Int,
 
     @Schema(description = "Error type")
-    val error: String,
+    val code: String,
 
     @Schema(description = "Detailed error message")
     val message: String,

@@ -1,9 +1,12 @@
 package dev.denissajnar.chirp.api.controllers
 
 import dev.denissajnar.chirp.api.dto.ErrorResponse
+import dev.denissajnar.chirp.api.dto.LoginRequest
 import dev.denissajnar.chirp.api.dto.RegisterRequest
 import dev.denissajnar.chirp.api.dto.UserResponse
+import dev.denissajnar.chirp.api.mappers.toAuthenticatedUserResponse
 import dev.denissajnar.chirp.api.mappers.toUserDto
+import dev.denissajnar.chirp.domain.model.AuthenticatedUserResponse
 import dev.denissajnar.chirp.service.auth.AuthService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
@@ -50,7 +53,7 @@ class AuthController(
                         examples = [
                             ExampleObject(
                                 name = "Validation Error",
-                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":400,"error":"Bad Request","message":"Validation failed","errors":{"email":"must be a valid email address","password":"must be at least 8 characters"}}""",
+                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":400,"code":"Bad Request","message":"VALIDATION_ERROR","errors":{"email":"must be a valid email address","password":"must be at least 8 characters"}}""",
                             ),
                         ],
                     ),
@@ -66,7 +69,7 @@ class AuthController(
                         examples = [
                             ExampleObject(
                                 name = "User Conflict",
-                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":409,"error":"Conflict","message":"User with this email or username already exists"}""",
+                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":409,"code":"USER_EXISTS","message":"User with this email or username already exists"}""",
                             ),
                         ],
                     ),
@@ -84,4 +87,78 @@ class AuthController(
         body: RegisterRequest,
     ): UserResponse =
         authService.register(body.email, body.username, body.password).toUserDto()
+
+    @Operation(
+        summary = "Logs in a new user",
+    )
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200",
+                description = "User logged in successfully",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        schema = Schema(implementation = AuthenticatedUserResponse::class),
+                    ),
+                ],
+            ),
+            ApiResponse(
+                responseCode = "400",
+                description = "Invalid request body",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        schema = Schema(implementation = ErrorResponse::class),
+                        examples = [
+                            ExampleObject(
+                                name = "Validation Error",
+                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":400,"code":"VALIDATION_ERROR","message":"Request validation failed","errors":{"email":"must be a valid email address","password":"must be at least 8 characters"}}""",
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            ApiResponse(
+                responseCode = "401",
+                description = "Invalid credentials",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        schema = Schema(implementation = ErrorResponse::class),
+                        examples = [
+                            ExampleObject(
+                                name = "Invalid Credentials",
+                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":401,"code":"INVALID_CREDENTIALS","message":"Invalid credentials"}""",
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            ApiResponse(
+                responseCode = "404",
+                description = "User not found",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        schema = Schema(implementation = ErrorResponse::class),
+                        examples = [
+                            ExampleObject(
+                                name = "User Not Found",
+                                value = """{"timestamp":"2025-10-01T10:30:00Z","status":404,"code":"USER_NOT_FOUND","message":"User not found"}""",
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        ],
+    )
+    @PostMapping("/login")
+    suspend fun login(
+        @RequestBody body: LoginRequest,
+    ): AuthenticatedUserResponse =
+        authService.login(
+            email = body.email,
+            password = body.password,
+        ).toAuthenticatedUserResponse()
 }

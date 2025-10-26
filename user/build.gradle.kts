@@ -22,8 +22,12 @@ dependencies {
     implementation(libs.flyway.database.postgresql)
     implementation(libs.spring.boot.starter.data.r2dbc)
     implementation(libs.spring.jdbc)
+    implementation(libs.jwt.api)
+
     runtimeOnly(libs.postgresql)
     runtimeOnly(libs.r2dbc.postgresql)
+    runtimeOnly(libs.jwt.impl)
+    runtimeOnly(libs.jwt.jackson)
 
     testImplementation(kotlin("test"))
 }
